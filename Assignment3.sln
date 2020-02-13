@@ -1,6 +1,8 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PlanetsLibrary", "PlanetsLibrary\PlanetsLibrary.shproj", "{6FEB5951-75F2-4D8D-9DC7-4F26B0223AA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Build|Any CPU = Build|Any CPU

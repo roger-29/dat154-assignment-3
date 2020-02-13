@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{6FEB5951-75F2-4D8D-9DC7-4F26B0223AA2}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>PlanetsLibrary</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Astronomy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Objects\Comet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Objects\Asteroid.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Objects\Star.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Objects\Planet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Objects\Moon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Orbit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\SpaceObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\PlanetarySystem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Objects\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Core\" />
+  </ItemGroup>
+</Project>
