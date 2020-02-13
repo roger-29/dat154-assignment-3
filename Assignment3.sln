@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PlanetsLibrary", "PlanetsLibrary\PlanetsLibrary.shproj", "{6FEB5951-75F2-4D8D-9DC7-4F26B0223AA2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetsLibraryTests", "PlanetsLibraryTests\PlanetsLibraryTests.csproj", "{BBACA105-64C2-45BB-8A18-E13A20099F8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Build|Any CPU = Build|Any CPU
