@@ -1,4 +1,8 @@
 ﻿using System;
+
+using Windows.UI.Xaml.Controls;
+
+
 using PlanetsLibrary.SpaceObjects;
 
 namespace PlanetsLibrary.Core {
@@ -10,8 +14,8 @@ namespace PlanetsLibrary.Core {
             CenterObject = centerObject;
         }
 
-        public void DrawSystemAtTime(int time, double centerX, double centerY, DrawDelegate @delegate = null) {
-            CenterObject.DrawSatellitesRecursively(time, centerX, centerY, @delegate);
+        public void DrawSystemAtTime(int time, double centerX, double centerY, Canvas canvas, DrawDelegate @delegate = null) {
+            CenterObject.DrawSatellitesRecursively(time, centerX, centerY, canvas, @delegate);
         }
     }
 }
