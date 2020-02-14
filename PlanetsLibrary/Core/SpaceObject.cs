@@ -18,17 +18,22 @@ namespace PlanetsLibrary.Core {
             Name = name;
         }
 
-        public virtual void Draw(double x, double y) {
-            Console.WriteLine(Name + " X: " + x + " Y: " + y);
+        public virtual void Draw(double x, double y, DrawDelegate @delegate = null) {
+
+            if (@delegate != null) {
+                @delegate.DynamicInvoke(this);
+            } else {
+                Console.WriteLine(Name + " X: " + x + " Y: " + y);
+            }
         }
 
-        public void DrawSatellitesRecursively(int tick, double x, double y) {
-            this.Draw(x, y);
+        public void DrawSatellitesRecursively(int tick, double x, double y, DrawDelegate @delegate) {
+            this.Draw(x, y, @delegate);
 
             foreach (Orbit orbit in this.SatelliteOrbits) {
                 ValueTuple<double, double> SatellitePosition = orbit.RelativePositionFromTime(tick, x, y);
 
-                orbit.Satellite.DrawSatellitesRecursively(tick, SatellitePosition.Item1, SatellitePosition.Item2);
+                orbit.Satellite.DrawSatellitesRecursively(tick, SatellitePosition.Item1, SatellitePosition.Item2, @delegate);
             };
         }
 
