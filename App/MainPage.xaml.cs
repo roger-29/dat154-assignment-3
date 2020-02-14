@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Shapes;
 using Windows.UI.Xaml.Media;
 
 
+using PlanetsLibrary;
 using PlanetsLibrary.Core;
 using PlanetsLibrary.SpaceObjects;
 
@@ -46,7 +47,7 @@ namespace App {
             Tick = 0;
 
             // Initialize solar system
-            solarSystem = InitializeSolarSystem();
+            solarSystem = new SolarSystem();
 
             // Initialize DrawDelegate
             Draw = new DrawDelegate(Objects.DrawSwitch);
@@ -58,43 +59,6 @@ namespace App {
             timer.Start();
         }
 
-        private PlanetarySystem InitializeSolarSystem() {
-            Star sun = new Star("Sun", 25);
-
-            Planet Mercury = new Planet("Mercury", radius: 10);
-            Planet Venus = new Planet("Venus", radius: 20);
-            Planet Earth = new Planet("Earth", radius: 20);
-            Planet Mars = new Planet("Mars", radius: 12);
-
-            // AsteroidBelt
-
-            Planet Jupiter = new Planet("Jupiter", radius: 12);
-            Planet Saturn = new Planet("Saturn", radius: 12);
-            Planet Uranus = new Planet("Uranus", radius: 12);
-            Planet Neptune = new Planet("Neptune", radius: 12);
-
-            DwarfPlanet Pluto = new DwarfPlanet("Pluto", radius: 12);
-
-            Earth.AddSatelliteOrbit(
-                new Orbit(
-                    new Moon("Luna", radius: 4), radius: 30, period: 100
-                    )
-                );
-
-            sun.AddSatelliteOrbits(new List<Orbit>() {
-                new Orbit(Mercury, radius: 50, period: 100),
-                new Orbit(Venus, radius: 100, period: 250),
-                new Orbit(Earth, radius: 150, period: 365),
-                new Orbit(Mars, radius: 200, period: 650),
-                new Orbit(Jupiter, radius: 400, period: 4000),
-                new Orbit(Saturn, radius: 500, period: 10000),
-                new Orbit(Uranus, radius: 600, period: 30000),
-                new Orbit(Neptune, radius: 700, period: 60000),
-                new Orbit(Pluto, radius: 800, period: 90000),
-            });
-
-            return new PlanetarySystem(sun);
-        }
 
         private void DispatcherTimerTick(object sender, object e) {
             // Increment ticker upon timer fire
