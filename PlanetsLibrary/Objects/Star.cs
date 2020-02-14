@@ -14,7 +14,7 @@ namespace PlanetsLibrary.SpaceObjects {
         //protected List<Planet> Planets;
 
 
-        public Star(String name) : base(name) {
+        public Star(String name, double radius) : base(name, radius) {
             // Planets = new List<Planet> { };
 
             SurfaceTemperature = 5800;

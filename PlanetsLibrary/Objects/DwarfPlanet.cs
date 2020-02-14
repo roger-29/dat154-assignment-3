@@ -6,6 +6,6 @@ using PlanetsLibrary.Core;
 
 namespace PlanetsLibrary.SpaceObjects {
     public class DwarfPlanet : Planet {
-        public DwarfPlanet(String name) : base(name) { }
+        public DwarfPlanet(String name, double radius) : base(name, radius) { }
     }
 }

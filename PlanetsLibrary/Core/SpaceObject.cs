@@ -7,15 +7,17 @@ namespace PlanetsLibrary.Core {
 
         public String Name { get; set; }
         public String Color { get; set; }
+        public double Radius { get; set; }
 
         // protected SpaceObject OrbitingAround { get; set; }
 
         public List<Orbit> SatelliteOrbits { get; set; }
 
-        public SpaceObject(String name) {
+        public SpaceObject(String name, double radius) {
             SatelliteOrbits = new List<Orbit> { };
 
             Name = name;
+            Radius = radius;
         }
 
         public virtual void Draw(double x, double y, DrawDelegate @delegate = null) {

@@ -6,6 +6,6 @@ namespace PlanetsLibrary.SpaceObjects {
 
     public class Comet : SpaceObject {
 
-        public Comet(String name) : base(name) { }
+        public Comet(String name, double radius) : base(name, radius) { }
     }
 }

@@ -6,7 +6,7 @@ namespace PlanetsLibrary.SpaceObjects {
 
     public class Moon : Planet {
 
-        public Moon(String name) : base(name) { }
+        public Moon(String name, double radius) : base(name, radius) { }
 
         /*
         public void Draw() {
