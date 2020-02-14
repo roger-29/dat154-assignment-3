@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Astronomy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\DrawDelegate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Objects\DwarfPlanet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Objects\Comet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Objects\Asteroid.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Objects\Star.cs" />
