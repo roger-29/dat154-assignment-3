@@ -18,7 +18,7 @@ namespace PlanetsLibrary {
         public SolarSystem() : base(Sun()) { }
 
         private static Star Sun() {
-            Star Sun = new Star("Sun", radius: 25);
+            Star Sun = new Star("Sun", radius: 20);
 
             Planet Mercury = SolarSystem.Mercury();
             Planet Venus = SolarSystem.Venus();
@@ -48,19 +48,19 @@ namespace PlanetsLibrary {
         }
 
         private static Planet Mercury() {
-            Planet Mercury = new Planet("Mercury", radius: 10);
+            Planet Mercury = new Planet("Mercury", radius: 8);
 
             return Mercury;
         }
 
         private static Planet Venus() {
-            Planet Venus = new Planet("Venus", radius: 20);
+            Planet Venus = new Planet("Venus", radius: 12);
 
             return Venus;
         }
 
         private static Planet Earth() {
-            Planet Earth = new Planet("Earth", radius: 20);
+            Planet Earth = new Planet("Earth", radius: 18);
 
             Moon Luna = new Moon("Luna", radius: 4);
 
@@ -74,7 +74,7 @@ namespace PlanetsLibrary {
         }
 
         private static Planet Mars() {
-            Planet Mars = new Planet("Mars", radius: 12);
+            Planet Mars = new Planet("Mars", radius: 14);
 
             Moon Phobos = new Moon("Phobos", radius: 3);
             Moon Deimos = new Moon("Deimos", radius: 3);
@@ -88,7 +88,7 @@ namespace PlanetsLibrary {
         }
 
         private static Planet Jupiter() {
-            Planet Jupiter = new Planet("Jupiter", radius: 12);
+            Planet Jupiter = new Planet("Jupiter", radius: 30);
 
             Moon Metis = new Moon("Metis", radius: 3);
             Moon Adrastea = new Moon("Adrastea", radius: 3);
@@ -130,7 +130,7 @@ namespace PlanetsLibrary {
         }
 
         private static Planet Saturn() {
-            Planet Saturn = new Planet("Saturn", radius: 12);
+            Planet Saturn = new Planet("Saturn", radius: 40);
 
             // TODO: Moons
 
