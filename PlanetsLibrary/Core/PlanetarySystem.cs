@@ -14,8 +14,8 @@ namespace PlanetsLibrary.Core {
             CenterObject = centerObject;
         }
 
-        public void DrawSystemAtTime(int time, double centerX, double centerY, Canvas canvas, DrawDelegate @delegate = null) {
-            CenterObject.DrawSatellitesRecursively(time, centerX, centerY, canvas, @delegate);
+        public void DrawSystemAtTime(int time, double centerX, double centerY, double scale, int maxDepth, Canvas canvas, DrawDelegate @delegate = null) {
+            CenterObject.DrawSatellitesRecursively(time, centerX, centerY, scale, maxDepth, canvas, @delegate);
         }
     }
 }

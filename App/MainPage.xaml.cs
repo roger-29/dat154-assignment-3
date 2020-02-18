@@ -35,7 +35,10 @@ namespace App {
 
 
         private int Tick;
-        private PlanetarySystem solarSystem;
+        private SpaceObject CenterObject;
+
+        private int Depth = 2;
+        private new double Scale = 0.0005;
 
         private DrawDelegate Draw;
         private DispatcherTimer timer;
@@ -47,7 +50,8 @@ namespace App {
             Tick = 0;
 
             // Initialize solar system
-            solarSystem = new SolarSystem();
+            PlanetarySystem solarSystem = new SolarSystem();
+            CenterObject = solarSystem.CenterObject;
 
             // Initialize DrawDelegate
             Draw = new DrawDelegate(Objects.DrawSwitch);
@@ -65,19 +69,33 @@ namespace App {
             Tick++;
 
             // Draw solar system on canvas
-            DrawOnCanvas(solarSystem, Tick);
+            DrawOnCanvas(CenterObject, Tick);
         }
 
-        private void DrawOnCanvas(PlanetarySystem planetarySystem, int Tick) {
+        private void DrawOnCanvas(SpaceObject centerObject, int Tick) {
             // Clear before new frame
             PlanetariumCanvas.Children.Clear();
 
             // Get width and height of canvas to determine center
+            // TODO: Update reactively
             double Width = PlanetariumCanvas.ActualWidth;
             double Height = PlanetariumCanvas.ActualHeight;
 
+            double CenterX = Width / 2;
+            double CenterY = Height / 2;
+            
             // Draw planetary system
-            planetarySystem.DrawSystemAtTime(Tick, Width / 2, Height / 2, PlanetariumCanvas, Draw);
+            centerObject.DrawSatellitesRecursively(
+                tick: Tick, 
+                x: CenterX,
+                y: CenterY,
+                scale: Scale, 
+                maxDepth: Depth, 
+                canvas: PlanetariumCanvas, 
+                @delegate: Draw
+            );
+        }
+
         }
     }
 }

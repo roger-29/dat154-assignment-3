@@ -27,11 +27,11 @@ namespace PlanetsLibrary.Core {
             return (X, Y);
         }
 
-        public ValueTuple<double, double> RelativePositionFromTime(int tick, double aroundX, double aroundY) {
+        public ValueTuple<double, double> RelativePositionFromTime(int tick, double aroundX, double aroundY, double scale = 1) {
             ValueTuple<double, double> RelativePosition = this.RelativePositionFromTime(tick);
 
-            double X = RelativePosition.Item1 + aroundX;
-            double Y = RelativePosition.Item2 + aroundY;
+            double X = RelativePosition.Item1 * scale + aroundX;
+            double Y = RelativePosition.Item2 * scale + aroundY;
 
             return (X, Y);
         }
