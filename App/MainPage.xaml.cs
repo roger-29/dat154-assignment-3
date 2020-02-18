@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,8 +16,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
-using Windows.UI.Xaml.Media;
 
+using Windows.System;
 
 using PlanetsLibrary;
 using PlanetsLibrary.Core;
@@ -46,6 +47,8 @@ namespace App {
         public MainPage() {
             this.InitializeComponent();
 
+            this.AddHandler(UIElement.KeyDownEvent, new KeyEventHandler(this.Page_KeyDown), handledEventsToo: true);
+
             // Initialize time
             Tick = 0;
 
@@ -62,7 +65,6 @@ namespace App {
             timer.Interval = TimeSpan.FromMilliseconds(1000 / 60);
             timer.Start();
         }
-
 
         private void DispatcherTimerTick(object sender, object e) {
             // Increment ticker upon timer fire
@@ -96,6 +98,39 @@ namespace App {
             );
         }
 
+        public void Page_KeyDown(object sender, KeyRoutedEventArgs e) {
+
+            if (timer.IsEnabled) {
+                timer.Stop();
+            } else {
+                timer.Start();
+            }
+
+            switch (e.Key) {
+                case VirtualKey.Left: Scale *= 2; break;
+                case VirtualKey.Right: Scale /= 2; break;
+                case VirtualKey.Down: Depth--; break;
+                case VirtualKey.Up: Depth++; break;
+                case VirtualKey.Space: {
+                    if (timer.IsEnabled) {
+                        timer.Stop();
+                    } else { 
+                        timer.Start(); 
+                    }
+                    break; 
+                }
+                default: return;
+            }
+        }
+
+        private void Page_Tapped(object sender, TappedRoutedEventArgs e) {
+            if (timer.IsEnabled) {
+                timer.Stop();
+            } else {
+                timer.Start();
+            }
+
+            Focus(FocusState.Programmatic);
         }
     }
 }
