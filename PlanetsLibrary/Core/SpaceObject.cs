@@ -9,9 +9,8 @@ namespace PlanetsLibrary.Core {
 
         public String Name { get; set; }
         public String Color { get; set; }
-        public double Radius { get; set; }
 
-        // protected SpaceObject OrbitingAround { get; set; }
+        public double Radius { get; set; }
 
         public List<Orbit> SatelliteOrbits { get; set; }
 
@@ -22,21 +21,26 @@ namespace PlanetsLibrary.Core {
             Radius = radius;
         }
 
-        public virtual void Draw(double x, double y, Canvas canvas, DrawDelegate @delegate = null) {
+        public virtual void Draw(double x, double y, double scale, Canvas canvas, DrawDelegate @delegate = null) {
             if (@delegate != null) {
-                @delegate.DynamicInvoke(this, canvas, x, y);
-            } else {
+                @delegate.Invoke(this, canvas, x, y);
+            }
+            else {
                 Console.WriteLine(Name + " X: " + x + " Y: " + y);
             }
         }
 
-        public void DrawSatellitesRecursively(int tick, double x, double y, Canvas canvas, DrawDelegate @delegate) {
-            this.Draw(x, y, canvas, @delegate);
+        public void DrawSatellitesRecursively(int tick, double x, double y, double scale, int maxDepth, Canvas canvas, DrawDelegate @delegate) {
+            if (maxDepth < 1) {
+                return;
+            }
+
+            this.Draw(x, y, scale, canvas, @delegate);
 
             foreach (Orbit orbit in this.SatelliteOrbits) {
-                ValueTuple<double, double> SatellitePosition = orbit.RelativePositionFromTime(tick, x, y);
+                ValueTuple<double, double> SatellitePosition = orbit.RelativePositionFromTime(tick, x, y, scale);
 
-                orbit.Satellite.DrawSatellitesRecursively(tick, SatellitePosition.Item1, SatellitePosition.Item2, canvas, @delegate);
+                orbit.Satellite.DrawSatellitesRecursively(tick, SatellitePosition.Item1, SatellitePosition.Item2, scale, maxDepth - 1, canvas, @delegate);
             };
         }
 

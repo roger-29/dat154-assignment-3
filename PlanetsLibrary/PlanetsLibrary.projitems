@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Orbit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\SpaceObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\PlanetarySystem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SolarSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Core\" />

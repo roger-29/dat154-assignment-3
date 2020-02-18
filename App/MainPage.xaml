@@ -6,9 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    KeyDown="Page_KeyDown"
+    Tapped="Page_Tapped"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    <Grid>
-        <Canvas x:Name="PlanetariumCanvas" Background="AliceBlue" />
+    
+    <Grid KeyDown="Page_KeyDown">
+        <Canvas x:Name="PlanetariumCanvas" Background="AliceBlue" SizeChanged="PlanetariumCanvas_SizeChanged"/>
+        <CommandBar VerticalAlignment="Bottom" />
     </Grid>
 </Page>
