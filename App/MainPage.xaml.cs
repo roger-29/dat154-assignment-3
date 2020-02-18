@@ -41,6 +41,9 @@ namespace App {
         private int Depth = 2;
         private new double Scale = 0.0005;
 
+        private double CenterX;
+        private double CenterY;
+
         private DrawDelegate Draw;
         private DispatcherTimer timer;
 
@@ -48,6 +51,8 @@ namespace App {
             this.InitializeComponent();
 
             this.AddHandler(UIElement.KeyDownEvent, new KeyEventHandler(this.Page_KeyDown), handledEventsToo: true);
+            CenterX = PlanetariumCanvas.ActualWidth / 2;
+            CenterY = PlanetariumCanvas.ActualHeight / 2;
 
             // Initialize time
             Tick = 0;
@@ -77,14 +82,6 @@ namespace App {
         private void DrawOnCanvas(SpaceObject centerObject, int Tick) {
             // Clear before new frame
             PlanetariumCanvas.Children.Clear();
-
-            // Get width and height of canvas to determine center
-            // TODO: Update reactively
-            double Width = PlanetariumCanvas.ActualWidth;
-            double Height = PlanetariumCanvas.ActualHeight;
-
-            double CenterX = Width / 2;
-            double CenterY = Height / 2;
             
             // Draw planetary system
             centerObject.DrawSatellitesRecursively(
@@ -131,6 +128,12 @@ namespace App {
             }
 
             Focus(FocusState.Programmatic);
+        }
+
+        private void PlanetariumCanvas_SizeChanged(object sender, SizeChangedEventArgs e) {
+            // Get width and height of canvas to determine center
+            CenterX = PlanetariumCanvas.ActualWidth / 2;
+            CenterY = PlanetariumCanvas.ActualHeight / 2;
         }
     }
 }

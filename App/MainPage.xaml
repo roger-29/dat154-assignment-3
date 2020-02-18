@@ -10,8 +10,8 @@
     Tapped="Page_Tapped"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     
-    <Grid>
-        <Canvas x:Name="PlanetariumCanvas" Background="AliceBlue"/>
+    <Grid KeyDown="Page_KeyDown">
+        <Canvas x:Name="PlanetariumCanvas" Background="AliceBlue" SizeChanged="PlanetariumCanvas_SizeChanged"/>
         <CommandBar VerticalAlignment="Bottom" />
     </Grid>
 </Page>
